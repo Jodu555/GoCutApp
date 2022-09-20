@@ -25,8 +25,17 @@ func main() {
 	scanner.Scan()
 	endPoint := scanner.Text()
 
-	cutCommand := ""
+	fmt.Println("Input your output file name: ")
+	scanner.Scan()
+	outputFile := scanner.Text()
 
-	fmt.Printf("Your source file is: %v and your start point: %v and your end point %v", sourceFile, startPoint, endPoint)
+	// 	ffmpeg -ss 00:00:00 -to 00:00:00 -i "in.mp4" -c copy "out.mp4"
+	// 	ffmpeg -i "out.mp4" "out.mp3"
+
+	cutCommand := "ffmepg -ss " + startPoint + " -to " + endPoint + "-i \"" + sourceFile + "\" -c copy \"" + outputFile + "\""
+
+	// fmt.Printf("Your source file is: %v and your start point: %v and your end point %v", sourceFile, startPoint, endPoint)
+
+	fmt.Println("Your command: \n" + cutCommand)
 
 }
